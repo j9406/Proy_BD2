@@ -64,7 +64,7 @@ public class Clientes extends javax.swing.JFrame {
         jPanel1.setLayout(new java.awt.BorderLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono de ingenieria.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/danipay2.png"))); // NOI18N
         jLabel1.setText("                           CLIENTES");
         jPanel1.add(jLabel1, java.awt.BorderLayout.CENTER);
 

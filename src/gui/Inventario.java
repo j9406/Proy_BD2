@@ -62,7 +62,7 @@ public class Inventario extends javax.swing.JFrame {
         jPanel1.setLayout(new java.awt.BorderLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono de ingenieria.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/danipay2.png"))); // NOI18N
         jLabel1.setText("                        INVENTARIO");
         jPanel1.add(jLabel1, java.awt.BorderLayout.CENTER);
 
@@ -121,7 +121,7 @@ public class Inventario extends javax.swing.JFrame {
         int rowsel = jTable2.getSelectedRow();
         String prodName = jTable2.getValueAt(rowsel, 0).toString();
         System.out.println(prodName);
-        String inv_suc = jTable2.getValueAt(rowsel, 2).toString();
+        String inv_suc = jTable2.getValueAt(rowsel, 1).toString();
         System.out.println(inv_suc);
         
         String a;
@@ -201,9 +201,7 @@ private void hacerConsulta(){
             conn= conexion.getConexion();
 //ejecuta la consulta
             st = conexion.sta(st);
-            rs = st.executeQuery("select product_id, Product_name, SUC_ID, "
-                    + "QUANTITY_ON_HAND "
-                    + "from Inventario join MATERIA using (product_id)" );
+            rs = st.executeQuery("select * from inventarioglobal" );
             ResultSetMetaData rsMd = rs.getMetaData();
              
                 cantidadColumnas = rsMd.getColumnCount();
