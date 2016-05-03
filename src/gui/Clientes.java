@@ -7,6 +7,7 @@ package gui;
 
 import conexion.Conexion;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -14,13 +15,14 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author javier
  */
-public class Inventario extends javax.swing.JFrame {
+public class Clientes extends javax.swing.JFrame {
 
     /**
      * Creates new form Inventario
@@ -30,7 +32,7 @@ public class Inventario extends javax.swing.JFrame {
     static ResultSet rs = null;
     DefaultTableModel modelo2 = new DefaultTableModel();
     Conexion conexion  = new Conexion();
-    public Inventario() {
+    public Clientes() {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Inventario");
@@ -49,6 +51,9 @@ public class Inventario extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
@@ -67,6 +72,31 @@ public class Inventario extends javax.swing.JFrame {
         jPanel1.add(jLabel3, java.awt.BorderLayout.LINE_END);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.PAGE_START);
+
+        jButton1.setText("Agregar Articulo...");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton1);
+
+        jButton2.setText("Cambiar Articulo...");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton2);
+
+        jButton3.setText("Borrar Articulo...");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton3);
+
         getContentPane().add(jPanel3, java.awt.BorderLayout.PAGE_END);
 
         jPanel4.setLayout(new java.awt.BorderLayout());
@@ -104,6 +134,46 @@ public class Inventario extends javax.swing.JFrame {
         hacerConsulta();
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        IntroducirCliente intrpro = new IntroducirCliente(this, true);
+        intrpro.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        //BUSCAR DATOS 
+        int rowsel = jTable2.getSelectedRow();
+        String prodName = jTable2.getValueAt(rowsel, 0).toString();
+        System.out.println(prodName);
+        
+        IntroducirCliente intrpro = new IntroducirCliente(this, true,prodName);
+        intrpro.setVisible(true);
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        int a;
+            a=jTable2.getSelectedRow();
+            a=Integer.parseInt(jTable2.getValueAt(a, 0).toString());
+            System.out.println(a);
+          try {
+             JOptionPane.showConfirmDialog(rootPane, "¿Estas seguro que deseas borrar este cliente?");
+            Conexion con = new Conexion();
+            conn = con.getConexion();
+            String sqlinsertar = "delete from CLIENTES WHERE customer_id = ?";
+            PreparedStatement psta = conn.prepareStatement(sqlinsertar);
+            psta.setInt(1, a);
+            psta.execute();
+            psta.close();
+            JOptionPane.showMessageDialog(null, "Registro Borrado");
+        } catch (Exception e) {
+            System.out.println(e.getCause());
+        }
+         
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -121,25 +191,32 @@ public class Inventario extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Inventario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Clientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Inventario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Clientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Inventario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Clientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Inventario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Clientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Inventario().setVisible(true);
+                new Clientes().setVisible(true);
             }
         });
     }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
@@ -150,6 +227,7 @@ public class Inventario extends javax.swing.JFrame {
     private javax.swing.JTable jTable2;
     // End of variables declaration//GEN-END:variables
 private void hacerConsulta(){
+       
         int cantidadColumnas=0;
         jTable2.setModel(modelo2);
          for (int i = 0; i < jTable2.getRowCount(); i++) {
@@ -161,9 +239,7 @@ private void hacerConsulta(){
             conn= conexion.getConexion();
 //ejecuta la consulta
             st = conexion.sta(st);
-            rs = st.executeQuery("select product_id, Product_name, SUC_ID, "
-                    + "QUANTITY_ON_HAND "
-                    + "from Inventario join MATERIA using (product_id)" );
+            rs = st.executeQuery("select * from CLIENTES" );
             ResultSetMetaData rsMd = rs.getMetaData();
              
                 cantidadColumnas = rsMd.getColumnCount();
@@ -184,4 +260,10 @@ private void hacerConsulta(){
         ex.printStackTrace();
        }
     }
+ private void Clear_Table1(){
+       for (int i = 0; i < jTable2.getRowCount(); i++) {
+           modelo2.removeRow(i);
+           i-=1;
+       }
+   }
 }

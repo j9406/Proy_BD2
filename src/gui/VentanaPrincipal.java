@@ -16,11 +16,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form VentanaPrincipal
      */
+    
+    
     public VentanaPrincipal() {
         initComponents();
         setTitle("Ventana Principal");
         setLocationRelativeTo(null);
         
+    }
+
+    VentanaPrincipal(Splash aThis, boolean rootPaneCheckingEnabled) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -40,7 +46,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jToggleButton1 = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,7 +54,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono uach.png"))); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel3.setText("BIENVENIDOS AL SISTEMA DE LABORATORIO FISICA");
+        jLabel3.setText("       BIENVENIDO AL CONTROL DE INVENTARIO");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -88,7 +93,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
         jPanel2.add(jButton1);
 
-        jButton2.setText("EMPLEADOS...");
+        jButton2.setText("CLIENTES...");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -96,16 +101,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
         jPanel2.add(jButton2);
 
-        jButton3.setText("GANANCIAS...");
+        jButton3.setText("PRODUCTOS...");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
         jPanel2.add(jButton3);
-
-        jToggleButton1.setText("DISTRIBUIDORES...");
-        jPanel2.add(jToggleButton1);
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
 
@@ -114,8 +116,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        ConsCliente prestamo = new ConsCliente();
-        prestamo.setVisible(true);
+        Clientes clientes = new Clientes();
+        clientes.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -126,7 +128,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "Se mostrara reporte");
+        Productos prod = new Productos();
+        prod.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
@@ -164,6 +167,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
     }
 
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -173,6 +177,5 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
 }

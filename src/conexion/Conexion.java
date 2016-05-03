@@ -25,6 +25,12 @@ public class Conexion {
             System.out.println("Error al tratar de abrir la base de Datos " + bd + " : " + exc);
         }
     }
+    
+    public static Statement sta(Statement st) throws SQLException {
+        con = getConnection();
+        st = con.createStatement();
+        return st;
+    }
    
     static {
         try {

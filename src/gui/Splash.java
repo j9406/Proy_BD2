@@ -135,6 +135,7 @@ public class Splash extends javax.swing.JFrame implements Runnable{
             Logger.getLogger(Splash.class.getName()).log(Level.SEVERE, null, ex);
         }
         setVisible(false);
-        new Logiin(this, rootPaneCheckingEnabled).setVisible(true);
+        VentanaPrincipal ventana = new VentanaPrincipal();
+        ventana.setVisible(true);
     }
 }

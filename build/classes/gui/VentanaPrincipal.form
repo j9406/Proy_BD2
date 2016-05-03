@@ -82,7 +82,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="BIENVENIDOS AL SISTEMA DE LABORATORIO FISICA"/>
+            <Property name="text" type="java.lang.String" value="       BIENVENIDO AL CONTROL DE INVENTARIO"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -106,7 +106,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButton2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="EMPLEADOS..."/>
+            <Property name="text" type="java.lang.String" value="CLIENTES..."/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
@@ -114,16 +114,11 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButton3">
           <Properties>
-            <Property name="text" type="java.lang.String" value="GANANCIAS..."/>
+            <Property name="text" type="java.lang.String" value="PRODUCTOS..."/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
           </Events>
-        </Component>
-        <Component class="javax.swing.JToggleButton" name="jToggleButton1">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="DISTRIBUIDORES..."/>
-          </Properties>
         </Component>
       </SubComponents>
     </Container>
