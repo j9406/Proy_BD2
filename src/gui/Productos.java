@@ -65,7 +65,7 @@ public class Productos extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono de ingenieria.png"))); // NOI18N
-        jLabel1.setText("                        INVENTARIO");
+        jLabel1.setText("                          PRODUCTO");
         jPanel1.add(jLabel1, java.awt.BorderLayout.CENTER);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono uach.png"))); // NOI18N
@@ -138,6 +138,7 @@ public class Productos extends javax.swing.JFrame {
         // TODO add your handling code here:
         IntroducirProducto intrpro = new IntroducirProducto(this, true);
         intrpro.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -149,7 +150,7 @@ public class Productos extends javax.swing.JFrame {
         
         IntroducirProducto intrpro = new IntroducirProducto(this, true,prodName);
         intrpro.setVisible(true);
-        
+        dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -171,7 +172,7 @@ public class Productos extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println(e.getCause());
         }
-         
+         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

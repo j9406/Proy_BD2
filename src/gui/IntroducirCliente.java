@@ -205,12 +205,11 @@ public class IntroducirCliente extends javax.swing.JDialog {
             try {
                 Conexion con = new Conexion();
                 conn = con.getConexion();
-                String sqlinsertar = "insert into Clientes values (?,?,?,?)";
+                String sqlinsertar = "{call insertar_clientes(?,?,?)}";
                 PreparedStatement psta = conn.prepareStatement(sqlinsertar);
-                psta.setInt(1, id);
-                psta.setString(2, txtName.getText());
-                psta.setString(3, txtApell.getText());
-                psta.setInt(4, sucursal);
+                psta.setString(1, txtName.getText());
+                psta.setString(2, txtApell.getText());
+                psta.setInt(3, sucursal);
                 psta.execute();
                 psta.close();
                 JOptionPane.showMessageDialog(null, "Registro Guardado Satisfactoriamente");
@@ -233,8 +232,8 @@ public class IntroducirCliente extends javax.swing.JDialog {
             } catch (Exception e) {
                 System.out.println(e.getCause());
             }
-            dispose();
         }
+        dispose();
     }//GEN-LAST:event_bttnIntroActionPerformed
 
     private void txtApellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellActionPerformed

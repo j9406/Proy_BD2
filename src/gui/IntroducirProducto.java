@@ -165,25 +165,25 @@ public class IntroducirProducto extends javax.swing.JDialog {
     private void bttnIntroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnIntroActionPerformed
         // TODO add your handling code here:
         if (band == 0) {
-            try {
-                Conexion con = new Conexion();
-                conn = con.getConexion();
-                st = con.sta(st);
-                rs = st.executeQuery("SELECT MAX(product_id) + 1 FROM MATERIA");
-                rs.next();
-                id = Integer.parseInt(rs.getString(1));
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-            }
+            //poner id automaticamente
+//            try {
+//                Conexion con = new Conexion();
+//                conn = con.getConexion();
+//                st = con.sta(st);
+//                rs = st.executeQuery("SELECT MAX(product_id) + 1 FROM MATERIA");
+//                rs.next();
+//                id = Integer.parseInt(rs.getString(1));
+//            } catch (Exception e) {
+//                System.out.println(e.getMessage());
+//            }
 
             try {
                 Conexion con = new Conexion();
                 conn = con.getConexion();
-                String sqlinsertar = "insert into Materia values (?,?,?)";
+                String sqlinsertar = "{call insertar_materia (?,?)}";
                 PreparedStatement psta = conn.prepareStatement(sqlinsertar);
-                psta.setInt(1, id);
-                psta.setString(2, txtName.getText());
-                psta.setString(3, txtPre.getText());
+                psta.setString(1, txtName.getText());
+                psta.setInt(2, Integer.parseInt(txtPre.getText()));
                 psta.execute();
                 psta.close();
                 JOptionPane.showMessageDialog(null, "Registro Guardado Satisfactoriamente");
@@ -205,8 +205,8 @@ public class IntroducirProducto extends javax.swing.JDialog {
             } catch (Exception e) {
                 System.out.println(e.getCause());
             }
-            dispose();
         }
+        dispose();
     }//GEN-LAST:event_bttnIntroActionPerformed
 
     /**

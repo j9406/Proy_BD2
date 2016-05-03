@@ -7,6 +7,7 @@ package gui;
 
 import conexion.Conexion;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -14,6 +15,7 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -49,6 +51,7 @@ public class Inventario extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
@@ -67,6 +70,15 @@ public class Inventario extends javax.swing.JFrame {
         jPanel1.add(jLabel3, java.awt.BorderLayout.LINE_END);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.PAGE_START);
+
+        jButton1.setText("Introducir Cantidad");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton1);
+
         getContentPane().add(jPanel3, java.awt.BorderLayout.PAGE_END);
 
         jPanel4.setLayout(new java.awt.BorderLayout());
@@ -104,6 +116,33 @@ public class Inventario extends javax.swing.JFrame {
         hacerConsulta();
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        int rowsel = jTable2.getSelectedRow();
+        String prodName = jTable2.getValueAt(rowsel, 0).toString();
+        System.out.println(prodName);
+        String inv_suc = jTable2.getValueAt(rowsel, 2).toString();
+        System.out.println(inv_suc);
+        
+        String a;
+        a=JOptionPane.showInputDialog("Ingrese cantidad de unidades");
+
+        try {
+                // main miconexion = new main();
+                Conexion con = new Conexion();
+                conn = con.getConexion();
+                String sqlinsertar = "update Inventario set quantity_on_hand=? where product_id="+prodName+" and suc_id="+inv_suc;
+                PreparedStatement psta = conn.prepareStatement(sqlinsertar);
+                psta.setString(1, a);
+                psta.execute();
+                psta.close();
+                JOptionPane.showMessageDialog(null, "Registro Guardado Satisfactoriamente");
+            } catch (Exception e) {
+                System.out.println(e.getCause());
+            }
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -140,6 +179,7 @@ public class Inventario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
